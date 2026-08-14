@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - API_KEY_ENABLED=true
+      - API_KEY=dev-api-key-12345-change-in-production
+      - AZURE_STORAGE_ENABLED=false
+      - AZURE_STORAGE_CONTAINER=documents
+      - AZURE_STORAGE_SAS_EXPIRY_HOURS=24
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    command: npm run dev
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
