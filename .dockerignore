@@ -1,0 +1,40 @@
+# Git files
+.git
+.gitignore
+
+# npm
+node_modules
+npm-debug.log
+npm-error.log
+package-lock.json
+yarn.lock
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Tests
+coverage
+.nyc_output
+
+# Documentation
+docs
+README.md
+
+# Development
+.nodemon.json
+sample-files
+test-files
